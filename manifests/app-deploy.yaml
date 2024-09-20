@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stopwatch-deployment
+spec:
+  replicas: 6 # You can adjust the number of replicas as needed
+  selector:
+    matchLabels:
+      app: stopwatch
+  template:
+    metadata:
+      labels:
+        app: stopwatch
+    spec:
+      containers:
+        - name: stopwatch
+          image: yash5090/stopwatch:latest # Replace with the actual image tag
+          ports:
+            - containerPort: 5000 # Replace with the port your Tetris game listens on

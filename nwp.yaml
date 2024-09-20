@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: stopwatch-network-policy
+spec:
+  podSelector:
+    matchLabels:
+      app: stopwatch
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: stopwatch
+  egress:
+  - to:
+    - podSelector:
+        matchLabels:
+          app: stopwatch

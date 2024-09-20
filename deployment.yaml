@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stopwatch-deployment
+spec:
+  replicas: 6  # Number of desired replicas
+  selector:
+    matchLabels:
+      app: stopwatch
+  template:
+    metadata:
+      labels:
+        app: stopwatch
+    spec:
+      containers:
+      - name: stopwatch
+        image: yash5090/stopwatch:latest
+        ports:
+        - containerPort: 5000
